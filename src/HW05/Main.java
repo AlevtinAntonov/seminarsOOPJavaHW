@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
-    public static final int GANG_SIZE = 8;
+    public static final int GANG_SIZE = 10;
     public static ArrayList<UnitBase> whiteSide;
     public static ArrayList<UnitBase> whitePeasant;
     public static ArrayList<UnitBase> whiteTeam;

@@ -1,5 +1,6 @@
 package HW05.chars;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -112,5 +113,19 @@ public abstract class UnitBase implements InterfaceHero {
 
     public Vector2 getPosition() {
         return position;
+    }
+
+    protected Vector2 getTarget(ArrayList<UnitBase> heroList){
+        float minDistance = Float.MAX_VALUE;
+        int minIndex = 0;
+        for (int i = 0; i < heroList.size(); i++) {
+            float temp = getPosition().getDistance(heroList.get(i).getPosition().x, heroList.get(i).getPosition().y);
+            if (temp < minDistance && heroList.get(i).status != "Died"){
+                minDistance = temp;
+                minIndex = i;
+            }
+        }
+//        System.out.println(minDistance + " " + minIndex);
+        return new Vector2(minDistance, minIndex);
     }
 }

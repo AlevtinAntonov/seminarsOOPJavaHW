@@ -12,6 +12,10 @@ public abstract class Warrior extends UnitBase {
 
     @Override
     public void step(ArrayList<UnitBase> heroesList) {
+        if (this.status.equals("Died")) return;
+
+        Vector2 target = getTarget(heroesList);
+
 
     }
 }

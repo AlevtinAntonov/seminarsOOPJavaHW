@@ -71,17 +71,18 @@ public abstract class Archer extends UnitBase{
             }
         }
     }
-    private Vector2 getTarget(ArrayList<UnitBase> heroList){
-        float minDistance = Float.MAX_VALUE;
-        int minIndex = 0;
-        for (int i = 0; i < heroList.size(); i++) {
-            float temp = getPosition().getDistance(heroList.get(i).getPosition().x, heroList.get(i).getPosition().y);
-            if (temp < minDistance && heroList.get(i).status != "Died"){
-               minDistance = temp;
-               minIndex = i;
-            }
-        }
-//        System.out.println(minDistance + " " + minIndex);
-        return new Vector2(minDistance, minIndex);
-    }
+
+//    private Vector2 getTarget(ArrayList<UnitBase> heroList){
+//        float minDistance = Float.MAX_VALUE;
+//        int minIndex = 0;
+//        for (int i = 0; i < heroList.size(); i++) {
+//            float temp = getPosition().getDistance(heroList.get(i).getPosition().x, heroList.get(i).getPosition().y);
+//            if (temp < minDistance && heroList.get(i).status != "Died"){
+//               minDistance = temp;
+//               minIndex = i;
+//            }
+//        }
+////        System.out.println(minDistance + " " + minIndex);
+//        return new Vector2(minDistance, minIndex);
+//    }
 }
