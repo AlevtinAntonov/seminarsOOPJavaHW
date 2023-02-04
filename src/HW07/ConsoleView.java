@@ -1,6 +1,6 @@
-package HW06;
+package HW07;
 
-import HW06.chars.Vector2;
+import HW07.chars.Vector2;
 
 import java.util.Collections;
 

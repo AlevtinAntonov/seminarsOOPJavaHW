@@ -1,4 +1,4 @@
-package HW06.chars;
+package HW07.chars;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,11 +7,14 @@ import java.util.List;
 import static java.lang.String.format;
 
 public abstract class UnitBase implements InterfaceHero {
-    protected int attack, protect, maxHealth, speed;
+    protected int attack;
+    protected int protect;
+    protected int maxHealth;
+    public int speed;
     protected float health;
     protected int[] damage;
     protected String name, role;
-    protected List<UnitBase> gang;
+    public List<UnitBase> gang;
     protected Vector2 position;
     protected String status;
 
@@ -54,6 +57,9 @@ public abstract class UnitBase implements InterfaceHero {
 
     public String getRole() { return role;}
 
+    public int getSpeed() {
+        return speed;
+    }
 
     public int getAttack() {
         return attack;
@@ -73,9 +79,7 @@ public abstract class UnitBase implements InterfaceHero {
         return maxHealth;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
+
 
     public String getName() {
         return name;

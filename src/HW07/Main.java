@@ -1,8 +1,9 @@
-package HW06;
+package HW07;
 
-import HW06.chars.*;
+import HW07.chars.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public class Main {
     public static ArrayList<UnitBase> darkSide;
     public static ArrayList<UnitBase> darkPeasant;
     public static ArrayList<UnitBase> darkTeam;
-
+    public static ArrayList<Object> sortList;
 
     public static void main(String[] args) {
         init();
@@ -22,6 +23,9 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             ConsoleView.view();
+//            for (int i = 0; i < sortList.size(); i++) {
+//                if (sortList.get(i).getGang )
+//            }
             whiteSide.forEach(n -> n.step(darkSide));
             darkSide.forEach(n -> n.step(whiteSide));
             scanner.nextLine();
@@ -36,6 +40,7 @@ public class Main {
         whiteTeam = new ArrayList<>();
         darkPeasant = new ArrayList<>();
         darkTeam = new ArrayList<>();
+        sortList = new ArrayList<>();
 
         int x = 1;
         int y = 1;
@@ -66,6 +71,16 @@ public class Main {
         }
         darkSide.addAll(darkTeam);
         darkSide.addAll(darkPeasant);
+
+        sortList.addAll(whiteSide);
+        sortList.addAll(darkSide);
+        for (int i = 0; i < sortList.size(); i++) {
+            System.out.println(sortList(i));
+        }
+
+//        sortList.sort(Comparator.comparing(UnitBase::getSpeed));
+
+
     }
 
 }

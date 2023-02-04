@@ -1,4 +1,4 @@
-package HW06.chars;
+package HW07.chars;
 
 public enum Name {
     Alex, Connor, David, Henry, John, Kevin, Luke, Morgan, Nico, Roger, Ronald, Ryan,
