@@ -1,11 +1,11 @@
-package HW05.chars;
+package HW06.chars;
 
 import java.util.List;
 
 public class Monk extends Magic {
 
     public Monk(List<UnitBase> gang, String name, int x, int y) {
-        super(12, 7, new int[]{-4,-4}, 30, 5, name,
+        super(12, 7, new int[]{-4,-4}, 30, 4, name,
                 "Monk", "Good");
         super.magic = true;
         super.gang = gang;

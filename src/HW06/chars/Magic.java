@@ -1,8 +1,8 @@
-package HW05.chars;
+package HW06.chars;
 
 import java.util.ArrayList;
 
-import static HW05.Main.GANG_SIZE;
+import static HW06.Main.GANG_SIZE;
 import static java.lang.String.format;
 
 public abstract class Magic extends UnitBase {
@@ -10,6 +10,11 @@ public abstract class Magic extends UnitBase {
 
     public Magic(int attack, int protect, int[] damage, int maxHealth, int speed, String name, String role, String status) {
         super(attack, protect, damage, maxHealth, speed, name, role, status);
+    }
+
+    @Override
+    public String getInfo() {
+        return super.getInfo() + "\t";
     }
 
     @Override
@@ -27,7 +32,7 @@ public abstract class Magic extends UnitBase {
                 }
             }
         }
-        System.out.printf("Максимальный урон: %.2f , Индекс: %s ", maxLostPercent, maxLostIndex);
+//        System.out.printf("Максимальный урон: %.2f , Индекс: %s ", maxLostPercent, maxLostIndex);
 
         if (magic) {
             int healer = (int) (gang.get(maxLostIndex).health + (gang.get(maxLostIndex).maxHealth *
@@ -37,7 +42,7 @@ public abstract class Magic extends UnitBase {
             } else {
                 gang.get(maxLostIndex).setHealth(gang.get(maxLostIndex).maxHealth);
             }
-            System.out.println(" -> Маг: " + name + " вылечил -> " +
+            System.out.println("Маг: " + name + " вылечил -> " +
                                gang.get(maxLostIndex).role + " имя: " +
                                gang.get(maxLostIndex).name +
                                " здоровье стало -> " + gang.get(maxLostIndex).health);

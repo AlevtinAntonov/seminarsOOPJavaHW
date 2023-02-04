@@ -1,4 +1,4 @@
-package HW05.chars;
+package HW06.chars;
 
 public class Vector2 {
     float x,y;
@@ -19,5 +19,10 @@ public class Vector2 {
 
         return (float) Math.sqrt(dx * dx + dy * dy);
 
+    }
+
+    public boolean isEqual(Vector2 pos) {
+        if (pos.y == y && pos.x == x) return true;
+        return false;
     }
 }

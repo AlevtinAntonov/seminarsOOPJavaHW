@@ -1,4 +1,4 @@
-package HW05.chars;
+package HW06.chars;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -88,7 +88,7 @@ public abstract class UnitBase implements InterfaceHero {
     @Override
     public String getInfo() {
         String outStr;
-        outStr = format("%s\t%s\t⚔%d\t\uD83D\uDEE1%d\t❤:%d / %d\t\uD83E\uDD15%d\t\uD83C\uDFC3%d",
+        outStr = format("%s\t%s\t⚔%d\t\uD83D\uDEE1%d\t❤:%d/%d\t\uD83E\uDD15%d\t\uD83C\uDFC3%d",
                 role, name, attack, protect,maxHealth, (int) health, (damage[0] + damage[1]) / 2, speed);
         return  outStr;
     }
@@ -114,6 +114,7 @@ public abstract class UnitBase implements InterfaceHero {
     public Vector2 getPosition() {
         return position;
     }
+    public void setPosition(Vector2 position){this.position = position;}
 
     protected Vector2 getTarget(ArrayList<UnitBase> heroList){
         float minDistance = Float.MAX_VALUE;
@@ -128,4 +129,13 @@ public abstract class UnitBase implements InterfaceHero {
 //        System.out.println(minDistance + " " + minIndex);
         return new Vector2(minDistance, minIndex);
     }
+    protected boolean checkPosition( Vector2 position)
+    {
+        for (UnitBase npc: this.gang) {
+            if(npc.getPosition().isEqual(position))
+                return false;
+        }
+        return true;
+    }
+
 }

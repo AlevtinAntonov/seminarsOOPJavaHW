@@ -1,4 +1,4 @@
-package HW05.chars;
+package HW06.chars;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import java.util.List;
 public class Magician extends Magic {
 
     public Magician(List<UnitBase> gang,String name, int x, int y) {
-        super(17, 12, new int[]{-5, -5}, 30, 9,
+        super(17, 12, new int[]{-5, -5}, 30, 4,
                 name, "Magician", "Good");
         super.magic = true;
         super.gang = gang;

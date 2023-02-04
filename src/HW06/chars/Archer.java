@@ -1,8 +1,8 @@
-package HW05.chars;
+package HW06.chars;
 
 import java.util.ArrayList;
 
-import static HW05.Main.GANG_SIZE;
+import static HW06.Main.GANG_SIZE;
 import static java.lang.String.format;
 
 public abstract class Archer extends UnitBase{
@@ -44,7 +44,7 @@ public abstract class Archer extends UnitBase{
         if (status != "Died" && shots > 0 && heroesList.get((int) target.y).status != "Died"){
             shots -= 1;
             heroesList.get((int) target.y).getDamage(attackPower);
-            System.out.printf(" %s %s выстрелил в %s %s, осталось стрел: %s \n", role, name,
+            System.out.printf("%s %s выстрелил в %s %s, осталось стрел: %s \n", role, name,
                     heroesList.get((int) target.y).role, heroesList.get((int) target.y).name, shots);
             if (heroesList.get((int) target.y).health <= 0){
                 heroesList.get((int) target.y).health = 0;
@@ -65,24 +65,11 @@ public abstract class Archer extends UnitBase{
             if ((gang.get(i).role == "Peasant") && ((Peasant) gang.get(i)).delivery){
                 shots +=1;
                 ((Peasant) gang.get(i)).setDelivery(false);
-                System.out.println(" Крестьянин " + ((Peasant) gang.get(i)).name + " принес стрелу Снайперу: "
+                System.out.println("Крестьянин " + ((Peasant) gang.get(i)).name + " принес стрелу Снайперу: "
                                    + name + ", стало стрел -> " + shots);
                 break;
             }
         }
     }
 
-//    private Vector2 getTarget(ArrayList<UnitBase> heroList){
-//        float minDistance = Float.MAX_VALUE;
-//        int minIndex = 0;
-//        for (int i = 0; i < heroList.size(); i++) {
-//            float temp = getPosition().getDistance(heroList.get(i).getPosition().x, heroList.get(i).getPosition().y);
-//            if (temp < minDistance && heroList.get(i).status != "Died"){
-//               minDistance = temp;
-//               minIndex = i;
-//            }
-//        }
-////        System.out.println(minDistance + " " + minIndex);
-//        return new Vector2(minDistance, minIndex);
-//    }
 }

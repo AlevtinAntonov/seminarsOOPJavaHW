@@ -1,4 +1,4 @@
-package HW05.chars;
+package HW06.chars;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,6 @@ public class Peasant extends UnitBase {
         delivery = true;
         super.gang = gang;
         super.position = new Vector2(x, y);
-
-
     }
 
 
@@ -24,8 +22,13 @@ public class Peasant extends UnitBase {
     public void setStatus(String status) {this.status = status;}
 
     @Override
+    public String getInfo() {
+        return super.getInfo() + "\t\t\t";
+    }
+
+    @Override
     public String toString() {
-        return "\n Крестьянин: " + super.toString() + ", delivery=" + delivery + ", status=" + status;
+        return "\nКрестьянин: " + super.toString() + ", delivery=" + delivery + ", status=" + status;
     }
 
     @Override

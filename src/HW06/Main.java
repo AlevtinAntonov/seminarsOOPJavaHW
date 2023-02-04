@@ -1,6 +1,6 @@
-package HW05;
+package HW06;
 
-import HW05.chars.*;
+import HW06.chars.*;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -67,4 +67,5 @@ public class Main {
         darkSide.addAll(darkTeam);
         darkSide.addAll(darkPeasant);
     }
+
 }
