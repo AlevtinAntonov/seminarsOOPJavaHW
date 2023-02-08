@@ -33,6 +33,7 @@ public abstract class UnitBase implements InterfaceHero {
 
     }
 
+
     public int setHealth(int health) {
         this.health = health;
         return health;

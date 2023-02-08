@@ -1,21 +1,13 @@
 package HW07;
 
-import HW07.chars.*;
+import static HW07.chars.Init.*;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+
+
+
 
 public class Main {
-    public static final int GANG_SIZE = 10;
-    public static ArrayList<UnitBase> whiteSide;
-    public static ArrayList<UnitBase> whitePeasant;
-    public static ArrayList<UnitBase> whiteTeam;
-    public static ArrayList<UnitBase> darkSide;
-    public static ArrayList<UnitBase> darkPeasant;
-    public static ArrayList<UnitBase> darkTeam;
-    public static ArrayList<Object> sortList;
 
     public static void main(String[] args) {
         init();
@@ -23,64 +15,29 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         while (true) {
             ConsoleView.view();
-//            for (int i = 0; i < sortList.size(); i++) {
-//                if (sortList.get(i).getGang )
-//            }
-            whiteSide.forEach(n -> n.step(darkSide));
-            darkSide.forEach(n -> n.step(whiteSide));
+
+            for (int i = 0; i < sortLists.size(); i++) {
+                if (sortLists.get(i).getGang().equals(whiteSide)) {
+                    for (int j = 0; j < whiteSide.size(); j++) {
+                        if (sortLists.get(i).equals(whiteSide.get(j))){
+                            whiteSide.get(j).step(darkSide);
+                        }
+                    }
+                } else if (sortLists.get(i).getGang().equals(darkSide)){
+                    for (int j = 0; j < darkSide.size(); j++) {
+                        if (sortLists.get(i).equals(darkSide.get(j))){
+                            darkSide.get(j).step(whiteSide);
+
+                        }
+                    }
+
+                }
+
+            }
+//            whiteSide.forEach(n -> n.step(darkSide));
+//            darkSide.forEach(n -> n.step(whiteSide));
             scanner.nextLine();
         }
-    }
-    private static void init(){
-        Random rand = new Random();
-        String heroName;
-        whiteSide = new ArrayList<>();
-        darkSide = new ArrayList<>();
-        whitePeasant = new ArrayList<>();
-        whiteTeam = new ArrayList<>();
-        darkPeasant = new ArrayList<>();
-        darkTeam = new ArrayList<>();
-        sortList = new ArrayList<>();
-
-        int x = 1;
-        int y = 1;
-        for (int i = 0; i < GANG_SIZE; i++) {
-            heroName = String.valueOf(Name.values()[rand.nextInt(Name.values().length)]);
-            switch (new Random().nextInt(4)) {
-                case 0: whitePeasant.add(new Peasant( whiteSide, heroName, x, y++)); break;
-                case 1: whiteTeam.add(new Outlaw(whiteSide, heroName, x, y++)); break;
-                case 2: whiteTeam.add(new Sniper(whiteSide, heroName, x, y++)); break;
-                default: whiteSide.add(new Magician(whiteSide, heroName, x, y++)); break;
-            }
-        }
-
-        whiteSide.addAll(whiteTeam);
-        whiteSide.addAll(whitePeasant);
-
-        x = GANG_SIZE;
-        y = 1;
-        for (int i = 0; i < GANG_SIZE; i++) {
-            heroName = String.valueOf(Name.values()[rand.nextInt(Name.values().length)]);
-
-            switch (new Random().nextInt(4)) {
-                case 0: darkPeasant.add(new Peasant(darkSide, heroName, x, y++)); break;
-                case 1: darkTeam.add(new Spearman(darkSide, heroName, x, y++)); break;
-                case 2: darkTeam.add(new Crossbowman(darkSide, heroName, x, y++)); break;
-                default: darkSide.add(new Monk(darkSide, heroName, x, y++)); break;
-            }
-        }
-        darkSide.addAll(darkTeam);
-        darkSide.addAll(darkPeasant);
-
-        sortList.addAll(whiteSide);
-        sortList.addAll(darkSide);
-        for (int i = 0; i < sortList.size(); i++) {
-            System.out.println(sortList(i));
-        }
-
-//        sortList.sort(Comparator.comparing(UnitBase::getSpeed));
-
-
     }
 
 }
