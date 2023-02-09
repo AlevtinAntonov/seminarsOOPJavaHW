@@ -1,8 +1,8 @@
-package HW06.chars;
+package HW07.chars;
 
 import java.util.ArrayList;
 
-import static HW06.Main.GANG_SIZE;
+import static HW07.chars.Init.GANG_SIZE;
 import static java.lang.String.format;
 
 public abstract class Archer extends UnitBase{

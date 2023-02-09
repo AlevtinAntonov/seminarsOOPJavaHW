@@ -1,4 +1,4 @@
-package HW06.chars;
+package HW07.chars;
 
 import java.util.ArrayList;
 import java.util.List;

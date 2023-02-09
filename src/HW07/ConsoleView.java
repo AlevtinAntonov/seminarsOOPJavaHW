@@ -1,8 +1,10 @@
-package HW06;
+package HW07;
 
-import HW06.chars.Vector2;
+import HW07.chars.Vector2;
 
 import java.util.Collections;
+
+import static HW07.chars.Init.*;
 
 public class ConsoleView {
 
@@ -30,8 +32,8 @@ public static int step = 0;
 
         int npcIndex = 0;
 
-        for (int i = 1; i <= Main.GANG_SIZE - 1; i++) {
-            for (int j = 1; j <= Main.GANG_SIZE; j++) {
+        for (int i = 1; i <= GANG_SIZE - 1; i++) {
+            for (int j = 1; j <= GANG_SIZE; j++) {
                 System.out.print(getChar(new Vector2(j, i)));
             }
             System.out.print("|");
@@ -40,7 +42,7 @@ public static int step = 0;
             npcIndex++;
         }
 
-        for (int j = 1; j <= Main.GANG_SIZE; j++) {
+        for (int j = 1; j <= GANG_SIZE; j++) {
             System.out.print(getChar(new Vector2(j, 10)));
         }
         System.out.print("|");
@@ -52,21 +54,21 @@ public static int step = 0;
 
         String str = "| ";
         boolean alive = false;
-        for (int i = 0; i < Main.GANG_SIZE; i++) {
-            if (Main.darkSide.get(i).getPosition().isEqual(position))
+        for (int i = 0; i < GANG_SIZE; i++) {
+            if (darkSide.get(i).getPosition().isEqual(position))
             {
-                if(Main.darkSide.get(i).getStatus().equals("Died"))
-                    str ="|"+AnsiColors.ANSI_RED+Main.darkSide.get(i).getName().toUpperCase().charAt(0)+AnsiColors.ANSI_RESET;
+                if(darkSide.get(i).getStatus().equals("Died"))
+                    str ="|"+AnsiColors.ANSI_RED+darkSide.get(i).getName().toUpperCase().charAt(0)+AnsiColors.ANSI_RESET;
                 else {
-                    str ="|"+AnsiColors.ANSI_GREEN+Main.darkSide.get(i).getName().toUpperCase().charAt(0)+AnsiColors.ANSI_RESET;
+                    str ="|"+AnsiColors.ANSI_GREEN+darkSide.get(i).getName().toUpperCase().charAt(0)+AnsiColors.ANSI_RESET;
                     alive = true;
                 }
             }
-            if (Main.whiteSide.get(i).getPosition().isEqual(position) && !alive)
+            if (whiteSide.get(i).getPosition().isEqual(position) && !alive)
             {
-                if(Main.whiteSide.get(i).getStatus().equals("Died"))
-                    str ="|"+AnsiColors.ANSI_RED+ Main.whiteSide.get(i).getName().toUpperCase().charAt(0)+AnsiColors.ANSI_RESET;
-                else str ="|"+AnsiColors.ANSI_BLUE+ Main.whiteSide.get(i).getName().toUpperCase().charAt(0)+AnsiColors.ANSI_RESET;
+                if(whiteSide.get(i).getStatus().equals("Died"))
+                    str ="|"+AnsiColors.ANSI_RED+ whiteSide.get(i).getName().toUpperCase().charAt(0)+AnsiColors.ANSI_RESET;
+                else str ="|"+AnsiColors.ANSI_BLUE+ whiteSide.get(i).getName().toUpperCase().charAt(0)+AnsiColors.ANSI_RESET;
             }
         }
         return str;
@@ -76,12 +78,12 @@ public static int step = 0;
         {
             String str = "";
 
-            if(Main.whiteSide.get(npcIndex).getStatus().equals("Died"))
-                str +="     " + AnsiColors.ANSI_RED+Main.whiteSide.get(npcIndex).getInfo()+AnsiColors.ANSI_RESET;
-            else str +="     " + AnsiColors.ANSI_BLUE+Main.whiteSide.get(npcIndex).getInfo()+AnsiColors.ANSI_RESET;
-            if(Main.darkSide.get(npcIndex).getStatus().equals("Died"))
-                str +="\t" + AnsiColors.ANSI_RED+Main.darkSide.get(npcIndex).getInfo()+AnsiColors.ANSI_RESET;
-            else str +="\t" + AnsiColors.ANSI_GREEN+Main.darkSide.get(npcIndex).getInfo()+AnsiColors.ANSI_RESET;
+            if(whiteSide.get(npcIndex).getStatus().equals("Died"))
+                str +="     " + AnsiColors.ANSI_RED+whiteSide.get(npcIndex).getInfo()+AnsiColors.ANSI_RESET;
+            else str +="     " + AnsiColors.ANSI_BLUE+ whiteSide.get(npcIndex).getInfo()+AnsiColors.ANSI_RESET;
+            if(darkSide.get(npcIndex).getStatus().equals("Died"))
+                str +="\t" + AnsiColors.ANSI_RED+darkSide.get(npcIndex).getInfo()+AnsiColors.ANSI_RESET;
+            else str +="\t" + AnsiColors.ANSI_GREEN+darkSide.get(npcIndex).getInfo()+AnsiColors.ANSI_RESET;
 
             return str;
         }

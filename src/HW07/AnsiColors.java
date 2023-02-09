@@ -1,4 +1,4 @@
-package HW06;
+package HW07;
 
 public class AnsiColors {
     public  static final String ANSI_RESET = "\u001B[0m";

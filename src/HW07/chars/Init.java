@@ -1,12 +1,10 @@
-package HW06;
-
-import HW06.chars.*;
+package HW07.chars;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
-import java.util.Scanner;
 
-public class Main {
+public class Init {
     public static final int GANG_SIZE = 10;
     public static ArrayList<UnitBase> whiteSide;
     public static ArrayList<UnitBase> whitePeasant;
@@ -14,20 +12,8 @@ public class Main {
     public static ArrayList<UnitBase> darkSide;
     public static ArrayList<UnitBase> darkPeasant;
     public static ArrayList<UnitBase> darkTeam;
-
-
-    public static void main(String[] args) {
-        init();
-
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            ConsoleView.view();
-            whiteSide.forEach(n -> n.step(darkSide));
-            darkSide.forEach(n -> n.step(whiteSide));
-            scanner.nextLine();
-        }
-    }
-    private static void init(){
+    public static ArrayList<UnitBase> sortLists;
+    public static void init(){
         Random rand = new Random();
         String heroName;
         whiteSide = new ArrayList<>();
@@ -36,6 +22,7 @@ public class Main {
         whiteTeam = new ArrayList<>();
         darkPeasant = new ArrayList<>();
         darkTeam = new ArrayList<>();
+        sortLists = new ArrayList<>();
 
         int x = 1;
         int y = 1;
@@ -66,6 +53,11 @@ public class Main {
         }
         darkSide.addAll(darkTeam);
         darkSide.addAll(darkPeasant);
-    }
 
+        sortLists.addAll(whiteSide);
+        sortLists.addAll(darkSide);
+
+        sortLists.sort(Comparator.comparing(UnitBase::getSpeed, Comparator.reverseOrder()));
+
+    }
 }

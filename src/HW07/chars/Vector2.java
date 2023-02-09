@@ -1,4 +1,4 @@
-package HW06.chars;
+package HW07.chars;
 
 public class Vector2 {
     float x,y;

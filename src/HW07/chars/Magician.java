@@ -1,4 +1,4 @@
-package HW06.chars;
+package HW07.chars;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ public class Magician extends Magic {
         super.magic = true;
         super.gang = gang;
         super.position = new Vector2(x, y);
+        super.pass = true;
 
     }
     @Override
