@@ -5,8 +5,6 @@ import static HW07.chars.Init.*;
 import java.util.*;
 
 
-
-
 public class Main {
 
     public static void main(String[] args) {
@@ -27,17 +25,11 @@ public class Main {
                     for (int j = 0; j < darkSide.size(); j++) {
                         if (sortLists.get(i).equals(darkSide.get(j))){
                             darkSide.get(j).step(whiteSide);
-
                         }
                     }
-
                 }
-
             }
-//            whiteSide.forEach(n -> n.step(darkSide));
-//            darkSide.forEach(n -> n.step(whiteSide));
             scanner.nextLine();
         }
     }
-
 }

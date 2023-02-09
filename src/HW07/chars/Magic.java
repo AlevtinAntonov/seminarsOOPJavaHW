@@ -1,14 +1,16 @@
 package HW07.chars;
 
+import HW07.AnsiColors;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 import static HW07.chars.Init.GANG_SIZE;
-//import static HW07.Main.GANG_SIZE;
-import static java.lang.String.format;
+
 
 public abstract class Magic extends UnitBase {
     boolean magic;
+    boolean pass;
 
     public Magic(int attack, int protect, int[] damage, int maxHealth, int speed, String name, String role, String status) {
         super(attack, protect, damage, maxHealth, speed, name, role, status);
@@ -21,6 +23,9 @@ public abstract class Magic extends UnitBase {
 
     @Override
     public void step(ArrayList<UnitBase> heroList) {
+        if(this.status == "Died"){
+            System.out.println(AnsiColors.ANSI_RED + this.role + " " + this.name + " is died ❌");
+        }
         double maxLostPercent = 0;
         int maxLostIndex = 0;
         for (int i = 0; i < GANG_SIZE; i++) {
@@ -35,17 +40,20 @@ public abstract class Magic extends UnitBase {
                 }
             }
         }
-//        System.out.printf("Максимальный урон: %.2f , Индекс: %s ", maxLostPercent, maxLostIndex);
+        System.out.printf("Максимальный урон: %.2f , Индекс: %s ", maxLostPercent, maxLostIndex);
 
-        if (magic) {
+        if (magic && pass) {
             int healer = 0;
             if (gang.get(maxLostIndex).status.equals("Died")){
-
                 switch (new Random().nextInt(4)) {
-                    case 0: gang.get(maxLostIndex).add(new Peasant(darkSide, heroName, x, y++)); break;
-                    case 1: darkTeam.add(new Spearman(darkSide, heroName, x, y++)); break;
-                    case 2: darkTeam.add(new Crossbowman(darkSide, heroName, x, y++)); break;
-                    default: darkSide.add(new Monk(darkSide, heroName, x, y++)); break;
+                    case 0: gang.set(maxLostIndex, new Peasant(gang, gang.get(maxLostIndex).name,
+                            (int) gang.get(maxLostIndex).position.x, (int) gang.get(maxLostIndex).position.y)); this.pass = false; break;
+                    case 1: gang.set(maxLostIndex, new Spearman(gang, gang.get(maxLostIndex).name,
+                            (int) gang.get(maxLostIndex).position.x, (int) gang.get(maxLostIndex).position.y)); this.pass = false; break;
+                    case 2: gang.set(maxLostIndex, new Crossbowman(gang, gang.get(maxLostIndex).name,
+                            (int) gang.get(maxLostIndex).position.x, (int) gang.get(maxLostIndex).position.y)); this.pass = false; break;
+                    default: gang.set(maxLostIndex, new Monk(gang, gang.get(maxLostIndex).name,
+                            (int) gang.get(maxLostIndex).position.x, (int) gang.get(maxLostIndex).position.y)); this.pass = false; break;
                 }
 
             } else {
@@ -63,6 +71,7 @@ public abstract class Magic extends UnitBase {
                                gang.get(maxLostIndex).name +
                                " здоровье стало -> " + gang.get(maxLostIndex).health);
         } else {
+            this.pass = true;
             System.out.println("Лечить некого, все здоровы :) ");
         }
     }
